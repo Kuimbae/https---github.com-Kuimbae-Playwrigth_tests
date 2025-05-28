@@ -1,7 +1,7 @@
 import { defineConfig, devices } from '@playwright/test';
 
 /**
- * Read environment variables from file.
+ * Lee las variables de entorno desde un archivo.
  * https://github.com/motdotla/dotenv
  */
 // import dotenv from 'dotenv';
@@ -9,31 +9,31 @@ import { defineConfig, devices } from '@playwright/test';
 // dotenv.config({ path: path.resolve(__dirname, '.env') });
 
 /**
- * See https://playwright.dev/docs/test-configuration.
+ * Consulta https://playwright.dev/docs/test-configuration.
  */
 export default defineConfig({
   testDir: './Test2',
-  /* Run tests in files in parallel */
+  /* Ejecuta los tests en archivos en paralelo */
   fullyParallel: true,
-  /* Fail the build on CI if you accidentally left test.only in the source code. */
+  /* Falla la build en CI si accidentalmente dejaste un test.only en el código fuente. */
   forbidOnly: !!process.env.CI,
-  /* Retry on CI only */
+  /* Reintenta solo en CI */
   retries: process.env.CI ? 2 : 0,
-  /* Opt out of parallel tests on CI. */
+  /* Desactiva los tests en paralelo en CI. */
   workers: process.env.CI ? 1 : undefined,
-  /* Reporter to use. See https://playwright.dev/docs/test-reporters */
+  /* Reportero a usar. Consulta https://playwright.dev/docs/test-reporters */
   reporter: 'html',
-  /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
+  /* Configuración compartida para todos los proyectos abajo. Consulta https://playwright.dev/docs/api/class-testoptions. */
   use: {
     headless: false,
-    /* Base URL to use in actions like `await page.goto('/')`. */
+    /* URL base para usar en acciones como `await page.goto('/')`. */
     // baseURL: 'http://localhost:3000',
 
-    /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
+    /* Recoge trazas al reintentar un test fallido. Consulta https://playwright.dev/docs/trace-viewer */
     trace: 'on-first-retry',
   },
 
-  /* Configure projects for major browsers */
+  /* Configura proyectos para los principales navegadores */
   projects: [
     {
       name: 'chromium',
@@ -50,7 +50,7 @@ export default defineConfig({
       use: { ...devices['Desktop Safari'] },
     },
 
-    /* Test against mobile viewports. */
+    /* Prueba en vistas móviles. */
     // {
     //   name: 'Mobile Chrome',
     //   use: { ...devices['Pixel 5'] },
@@ -60,7 +60,7 @@ export default defineConfig({
     //   use: { ...devices['iPhone 12'] },
     // },
 
-    /* Test against branded browsers. */
+    /* Prueba en navegadores de marca. */
     // {
     //   name: 'Microsoft Edge',
     //   use: { ...devices['Desktop Edge'], channel: 'msedge' },
@@ -71,7 +71,7 @@ export default defineConfig({
     // },
   ],
 
-  /* Run your local dev server before starting the tests */
+  /* Ejecuta tu servidor de desarrollo local antes de iniciar los tests */
   // webServer: {
   //   command: 'npm run start',
   //   url: 'http://localhost:3000',
